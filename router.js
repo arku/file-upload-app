@@ -1,6 +1,8 @@
-function route(pathname){
-    console.log(pathname);
-    console.log('Request yet to be served');
+function route(handle, pathname){
+  if(typeof handle[pathname] === 'function')
+    handle[pathname]();
+  else
+    console.log('No request handler found for ' + pathname);
 }
 
 exports.route = route;
