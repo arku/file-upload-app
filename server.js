@@ -5,12 +5,10 @@ function start(route, handle){
     var server = http.createServer(function(req, res){
       var pathname = url.parse(req.url).pathname;
 
-      route(handle, pathname);
       res.writeHead(200, {
-          'Content-Type': 'text/html'
+          'Content-Type': 'text/plain'
       });
-      res.write('<p><b>NodeJS</b> is awesome</p>');
-      res.end();
+      route(handle, pathname, res);
     });
 
     server.listen(8000);
